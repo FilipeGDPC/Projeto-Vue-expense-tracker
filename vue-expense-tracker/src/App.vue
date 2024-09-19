@@ -24,4 +24,4 @@ export default {
         AddTransaction
     }
 }
-</script>
+ </script>
