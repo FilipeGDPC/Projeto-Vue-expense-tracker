@@ -1,19 +1,19 @@
 <template>
-     <h3>Add new transaction</h3>
-      <form id="form" @submit.prevent="onSubmit">
-        <div class="form-control">
-          <label for="text">Text</label>
-          <input type="text" id="text" v-model="text" placeholder="Enter text..." />
-        </div>
-        <div class="form-control">
-          <label for="amount"
-            >Amount <br />
-            (negative - expense, positive - income)</label
-          >
-          <input type="text" id="amount" v-model="amount" placeholder="Enter amount..." />
-        </div>
-        <button class="btn">Add transaction</button>
-      </form>
+  <h3>Add new transaction</h3>
+  <form id="form" @submit.prevent="onSubmit">
+    <div class="form-control">
+      <label for="text">Text</label>
+      <input type="text" id="text" v-model="text" placeholder="Enter text..." />
+    </div>
+    <div class="form-control">
+      <label for="amount">
+        Amount <br />
+        (negative - expense, positive - income)
+      </label>
+      <input type="text" id="amount" v-model="amount" placeholder="Enter amount..." />
+    </div>
+    <button class="btn">Add transaction</button>
+  </form>
 </template>
 
 <script setup>
@@ -26,15 +26,19 @@ const amount = ref('');
 const toast = useToast();
 
 const onSubmit = () => {
-  if (!text.value || !amount.value) {
-    toast.error('Please add a text and amount');
+  if (!text.value) {
+    toast.error('Por favor, adicione um texto');
+    return;
+  }
+  if (!amount.value) {
+    toast.error('Por favor, adicione um valor');
     return;
   }
 
-   console.log('text.value', amount.value);
+  console.log('text.value', text.value);
+  console.log('amount.value', amount.value);
 
-   text.value = '';
-    amount.value = '';
+  text.value = '';
+  amount.value = '';
 }
-
 </script>
