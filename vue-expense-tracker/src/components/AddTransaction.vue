@@ -18,13 +18,23 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useToast } from 'vue-toastification';
 
 const text = ref('');
 const amount = ref('');
 
+const toast = useToast();
+
 const onSubmit = () => {
-    e.preventDefault();
-    console.log('text.value', amount.value);
+  if (!text.value || !amount.value) {
+    toast.error('Please add a text and amount');
+    return;
+  }
+
+   console.log('text.value', amount.value);
+
+   text.value = '';
+    amount.value = '';
 }
 
 </script>
