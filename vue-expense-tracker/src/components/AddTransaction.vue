@@ -23,27 +23,27 @@ import { useToast } from 'vue-toastification';
 const text = ref('');
 const amount = ref('');
 
-const emit = defineEmits([transactionSubmitted]);
+// Correção: Definir o evento como uma string
+const emit = defineEmits(['transactionSubmitted']);
 
 const toast = useToast();
 
 const onSubmit = () => {
   if (!text.value) {
-    toast.error('Por favor, adicione um texto');
+    toast.error('Please, add a text'); 
     return;
   }
   if (!amount.value) {
-    toast.error('Por favor, adicione um valor');
+    toast.error('Please, add a amount'); 
     return;
   }
 
   const transactionData = {
     text: text.value,
-    amount: ParseFloat(amount.value),
+    amount: parseFloat(amount.value)
   }
 
   emit('transactionSubmitted', transactionData);
-
 
   text.value = '';
   amount.value = '';
