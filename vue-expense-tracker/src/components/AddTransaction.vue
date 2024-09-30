@@ -23,7 +23,6 @@ import { useToast } from 'vue-toastification';
 const text = ref('');
 const amount = ref('');
 
-// Correção: Definir o evento como uma string
 const emit = defineEmits(['transactionSubmitted']);
 
 const toast = useToast();
